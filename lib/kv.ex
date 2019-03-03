@@ -1,23 +1,11 @@
 defmodule KV do
+  use Application
+
   @moduledoc """
-  Documentation for KV.
+  KV.
   """
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> KV.hello()
-      :world
-
-  """
-  def hello do
-    :world
-  end
-
-  def get_value do
-    age = IO.getn("What's your age? ", 3)
-    IO.puts(age)
+  def start(_type, _args) do
+    KV.Supervisor.start_link(name: KV.Supervisor)
   end
 end
